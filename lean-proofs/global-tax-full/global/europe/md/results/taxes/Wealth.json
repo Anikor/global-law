@@ -1,26 +1,32 @@
 [
  {
   "oecd": "4300",
-  "tax": "Inheritance and gift tax",
-  "statute": "none recorded (not cited)",
-  "grade": "C",
-  "status": "unsupported",
-  "kernel_parts": [],
-  "tried": "not read in the P6 pass",
+  "tax": "Inheritance and gift tax (not levied)",
+  "statute": "Codul fiscal art. 20 lit. i) (property received by citizens as a gift or inheritance is non-taxable income), art. 90¹ alin. (3¹) (6 % income tax withheld on donated money)",
+  "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+  "grade": "A",
+  "status": "absent",
+  "kernel_parts": [
+   "Absent"
+  ],
   "unsupported": [
-   "would unlock: the act's 2025 classes, allowances and tariff (or a provision showing the tax is not levied)"
+   "the 6 % withheld on money donated by the payers of art. 90 (heading 1100) is not modelled: the donor is not in the input"
   ]
  },
  {
   "oecd": "4200",
-  "tax": "Net wealth tax",
-  "statute": "none recorded",
-  "grade": "C",
-  "status": "unsupported",
-  "kernel_parts": [],
-  "tried": "not read in the P6 pass",
+  "tax": "Impozitul pe avere",
+  "statute": "Codul fiscal Titlul VI¹ art. 287¹-287⁷ (art. 287³ alin. (1): residential property of at least 200 average salaries and 120 m², art. 287⁴: 0,8 %), HG nr. 845/2024 (average salary 16 100 lei)",
+  "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612), HG nr. 845/2024 (doc_id=146269)",
+  "grade": "A",
+  "kernel_parts": [
+   "charge",
+   "assetAreaM2 (2.4.0)"
+  ],
   "unsupported": [
-   "would unlock: the act's 2025 rates and allowances (or a provision showing no wealth tax is levied)"
+   "assets of kind realEstate are taken as residential, joint ownership (art. 287² (2), (3)) follows the asset's person",
+   "floor area not given (areaM2): no charge, listed as grade C",
+   "reading taken: the two conditions of art. 287³ (1) are cumulative"
   ]
  }
 ]

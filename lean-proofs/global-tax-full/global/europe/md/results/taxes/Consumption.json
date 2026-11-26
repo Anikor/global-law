@@ -2,27 +2,31 @@
  {
   "oecd": "5111",
   "tax": "Taxa pe valoarea adăugată",
-  "statute": "Codul fiscal Titlul III art. 96 (20 %, 8 %); registration at MDL 1 200 000",
-  "dated": "PwC, last reviewed 20 January 2025",
-  "grade": "B",
+  "statute": "Codul fiscal art. 96 lit. a) (20 %), lit. b) (8 %), art. 103 alin. (1) (exempt), art. 112 alin. (1) (registration above 1,2 million lei)",
+  "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+  "grade": "A",
   "kernel_parts": [
    "Vat"
   ],
   "unsupported": [
-   "exempt supplies taken from the EU-style structure the source describes (health, education, finance, insurance, residential rent), not quoted item by item",
-   "food at the standard rate: the reduced rate covers only bread, bakery and dairy products (8 %) (not separable in the basket's food line)",
-   "the act's own text not reached: rates from PwC Worldwide Tax Summaries (reliable secondary host)"
+   "food at the standard rate: bread, dairy products, unprocessed farm produce and beet sugar pay 8 % and are not separable in the basket's food line",
+   "transport at the standard rate: passenger transport within the country is exempt (art. 103 (1) pct. 17)) and is not separable",
+   "alcoholic drinks served in restaurants pay 20 % and are not separable from the 8 % line"
   ]
  },
  {
   "oecd": "5121",
-  "tax": "Excise duties",
-  "statute": "Codul fiscal Titlul IV (not read)",
-  "grade": "C",
-  "status": "unsupported",
-  "kernel_parts": [],
+  "tax": "Accize",
+  "statute": "Codul fiscal Titlul IV, anexa nr. 1 (column 2025): beer 3,05 lei/l, spirits 132,27 lei per litre of absolute alcohol, cigarettes 1081,43 lei + 13 % per 1000, at least 1450,48 lei (art. 123¹), petrol 8837,49 lei/t, diesel 3718,64 lei/t, vermouth 17,37 lei/l, heating oil at the diesel rate, other tobacco 210,54 lei/kg",
+  "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+  "grade": "B",
+  "kernel_parts": [
+   "ExciseRule (2.1)"
+  ],
   "unsupported": [
-   "not read in the P1 pass: would unlock with the act's 2025 rate articles"
+   "fuel is taxed per tonne: without the line's massG the model assumes 0,75 kg per litre of petrol and 0,84 kg per litre of diesel and heating oil, a default that is not in the Code (the reason for grade B)",
+   "wine of fresh grapes (2204) is not in the annex: booked at 0. Vermouth (2205) is taxed when the line says sub vermouth",
+   "other tobacco needs the line's massG. Fine-cut tobacco, heated-tobacco sticks, liquefied gas, vehicles (anexa nr. 2) and the other goods of anexa nr. 1 are not modelled"
   ]
  }
 ]

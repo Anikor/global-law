@@ -20,205 +20,272 @@
  "taxes": [
   {
    "oecd": "1100",
-   "tax": "Gains of individuals on shares and property (disposals)",
-   "statute": "Codul fiscal art. 39-40 (venitul din creșterea de capital)",
-   "grade": "C",
-   "status": "unsupported",
-   "kernel_parts": [],
-   "tried": "the gains provisions were not read in the P3 pass (the 1.x model may tax the household's own `capitalGains`; the extra disposals are not routed)",
+   "tax": "Impozitul pe venit: creșterea de capital (gains of individuals on disposals)",
+   "statute": "Codul fiscal art. 37-41 (art. 40 alin. (1), (5¹), (6), (7), art. 41 alin. (1)), art. 15 lit. a) (12 %)",
+   "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+   "grade": "A",
+   "kernel_parts": [
+    "charge",
+    "Schedule"
+   ],
    "unsupported": [
-    "would unlock: the act's gains articles as in force 2025 (holding periods, main-home exemption, rate or routing into the 1.x model)"
+    "a personal exemption (art. 33-35) left unused by the person's other income is not set against the gain",
+    "every asset of kind vehicle is taken as a car, collection vehicles (art. 40 (5¹)) are not distinguished",
+    "gifts treated as sales by the donor (art. 40 (4), (5)) are not in the input"
    ],
    "family_file": "lean/MdGlobal/Capital.lean",
-   "family_guards": 0
+   "family_guards": 7
   },
   {
    "oecd": "5111",
    "tax": "Taxa pe valoarea adăugată",
-   "statute": "Codul fiscal Titlul III art. 96 (20 %, 8 %); registration at MDL 1 200 000",
-   "dated": "PwC, last reviewed 20 January 2025",
-   "grade": "B",
+   "statute": "Codul fiscal art. 96 lit. a) (20 %), lit. b) (8 %), art. 103 alin. (1) (exempt), art. 112 alin. (1) (registration above 1,2 million lei)",
+   "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+   "grade": "A",
    "kernel_parts": [
     "Vat"
    ],
    "unsupported": [
-    "exempt supplies taken from the EU-style structure the source describes (health, education, finance, insurance, residential rent), not quoted item by item",
-    "food at the standard rate: the reduced rate covers only bread, bakery and dairy products (8 %) (not separable in the basket's food line)",
-    "the act's own text not reached: rates from PwC Worldwide Tax Summaries (reliable secondary host)"
+    "food at the standard rate: bread, dairy products, unprocessed farm produce and beet sugar pay 8 % and are not separable in the basket's food line",
+    "transport at the standard rate: passenger transport within the country is exempt (art. 103 (1) pct. 17)) and is not separable",
+    "alcoholic drinks served in restaurants pay 20 % and are not separable from the 8 % line"
    ],
    "family_file": "lean/MdGlobal/Consumption.lean",
-   "family_guards": 3
+   "family_guards": 16
   },
   {
    "oecd": "5121",
-   "tax": "Excise duties",
-   "statute": "Codul fiscal Titlul IV (not read)",
-   "grade": "C",
-   "status": "unsupported",
-   "kernel_parts": [],
+   "tax": "Accize",
+   "statute": "Codul fiscal Titlul IV, anexa nr. 1 (column 2025): beer 3,05 lei/l, spirits 132,27 lei per litre of absolute alcohol, cigarettes 1081,43 lei + 13 % per 1000, at least 1450,48 lei (art. 123¹), petrol 8837,49 lei/t, diesel 3718,64 lei/t, vermouth 17,37 lei/l, heating oil at the diesel rate, other tobacco 210,54 lei/kg",
+   "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+   "grade": "B",
+   "kernel_parts": [
+    "ExciseRule (2.1)"
+   ],
    "unsupported": [
-    "not read in the P1 pass: would unlock with the act's 2025 rate articles"
+    "fuel is taxed per tonne: without the line's massG the model assumes 0,75 kg per litre of petrol and 0,84 kg per litre of diesel and heating oil, a default that is not in the Code (the reason for grade B)",
+    "wine of fresh grapes (2204) is not in the annex: booked at 0. Vermouth (2205) is taxed when the line says sub vermouth",
+    "other tobacco needs the line's massG. Fine-cut tobacco, heated-tobacco sticks, liquefied gas, vehicles (anexa nr. 2) and the other goods of anexa nr. 1 are not modelled"
    ],
    "family_file": "lean/MdGlobal/Consumption.lean",
-   "family_guards": 3
+   "family_guards": 16
   },
   {
    "oecd": "1200",
    "tax": "Impozitul pe venit (persoane juridice)",
-   "statute": "Codul fiscal nr. 1163/1997 art. 15 lit. b) (12 %)",
-   "dated": "PwC, last reviewed 2 July 2025",
-   "grade": "B",
+   "statute": "Codul fiscal nr. 1163/1997 art. 15 lit. b) (12 %), lit. c) (farm households 7 %), art. 54²-54³ (4 % regime), art. 369-370 (single tax of IT-park residents, 7 % of sales with a minimum per employee)",
+   "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+   "grade": "A",
    "kernel_parts": [
-    "CorpRegime"
+    "CorpRegime",
+    "charge",
+    "companySectors (2.5.0)"
    ],
    "unsupported": [
-    "the Code's own text not reached (secondary host)",
-    "4 % regime for small non-VAT companies and 7 % for farming enterprises not modelled"
+    "the regime is read from company.sector (farmHousehold, smallBusinessRegime, itPark, names of the model's own). No sector: 12 %",
+    "the conditions of the 4 % regime (art. 54¹) are not tested, and the income in the accounts is taken as the turnover",
+    "the IT-park minimum is taken for 12 months for every employee, the Code computes it month by month",
+    "deduction limits of Titlul II capitolul 3, group regimes, transfer pricing and treaties are not modelled"
    ],
    "family_file": "lean/MdGlobal/Corporate.lean",
-   "family_guards": 7
+   "family_guards": 12
   },
   {
    "oecd": "1200",
    "tax": "Withholding on payments abroad",
-   "statute": "Codul fiscal art. 71, 72, 73 (dividends 6 %; interest and royalties 12 %)",
-   "dated": "PwC WWTS Corporate - Withholding taxes, 2025-06-24 (Wayback capture)",
-   "grade": "B",
+   "statute": "Codul fiscal art. 91 alin. (1) (dividends 6 %, other income of art. 71 12 %), art. 71 alin. (1) lit. e), f), j)",
+   "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+   "grade": "A",
    "kernel_parts": [
     "Wht"
    ],
    "unsupported": [
-    "EU parent-subsidiary / interest-royalty exemptions and the higher tax-haven rates not modelled",
-    "treaty rates and EU directives out of scope (statutory, treaty-free)"
+    "dividends from profits of 2008–2011 pay 15 %: the 6 % rate is applied",
+    "every payment abroad is taken as Moldovan-source income of art. 71, treaties are not modelled"
    ],
    "family_file": "lean/MdGlobal/Corporate.lean",
-   "family_guards": 7
+   "family_guards": 12
   },
   {
    "oecd": "1200",
-   "tax": "Impozit reținut la sursă (servicii) (services)",
-   "statute": "Codul fiscal nr. 1163/1997 art. 71, 73 (non-residents)",
-   "dated": "2025-06-24",
-   "grade": "B",
+   "tax": "Impozit reținut la sursă (servicii)",
+   "statute": "Codul fiscal art. 91 alin. (1), art. 71 alin. (1) lit. b), b¹), r) (services 12 %)",
+   "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+   "grade": "A",
    "kernel_parts": [
     "Wht"
    ],
    "unsupported": [
-    "services are taken as Moldovan-source income (art. 71) taxed at the general 12 % rate",
-    "treaty rates and EU directives out of scope (statutory, treaty-free)"
+    "services are taken as performed in Moldova (art. 71 (1) lit. b¹), r)) or as management and consulting services paid by a resident (lit. b))"
    ],
    "family_file": "lean/MdGlobal/Corporate.lean",
-   "family_guards": 7
+   "family_guards": 12
   },
   {
    "oecd": "5200",
-   "tax": "Taxes on use of goods (motor vehicle taxes)",
-   "statute": "the country's motor-vehicle tax act",
-   "grade": "C",
-   "status": "unsupported",
-   "kernel_parts": [],
-   "tried": "not read in the P7 pass",
-   "unsupported": [
-    "would unlock: the vehicle tax act and the 2025 rates (no vehicle field in the canonical entity: an asset of kind vehicle with an annual value would carry it)"
+   "tax": "Taxa pentru folosirea drumurilor de către autovehiculele înmatriculate în Republica Moldova",
+   "statute": "Codul fiscal Titlul IX art. 337-340, anexa nr. 1 pct. 1 (motorcycles), pct. 2 (cars per cm³), pct. 5 (tractors), pct. 6 (lorries by total mass), pct. 7 (buses by seats)",
+   "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+   "grade": "A",
+   "kernel_parts": [
+    "VehicleTax (2.4.0)",
+    "QtyTable"
    ],
-   "triage": "blocked: the canonical input has no vehicle attributes (CO2, engine kW / cm3, mass, fuel, first registration); kernel request filed (R1 Europe pass 7); national vs municipal frame to be recorded with the act",
+   "unsupported": [
+    "trailers and semi-trailers (anexa nr. 1 pct. 3, 4, per tonne of load capacity) are not modelled: the input has no load capacity",
+    "a car with no engine capacity (electric) has no row in pct. 2: no charge, listed as grade C",
+    "the exemption of persons with locomotor disabilities (art. 343) is not in the input",
+    "reading taken: the rate of the car's band applies to its whole engine capacity",
+    "the kind names lorry, bus and tractor are the model's own"
+   ],
    "family_file": "lean/MdGlobal/Other.lean",
-   "family_guards": 0
+   "family_guards": 15
   },
   {
    "oecd": "6000",
    "tax": "Other taxes",
-   "statute": "none recorded by the registry",
+   "statute": "Codul fiscal art. 6 alin. (5), (6) (the Code's list of state and local taxes)",
+   "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
    "grade": "C",
    "status": "unsupported",
    "kernel_parts": [],
-   "tried": "registry row: no other notable tax; no provision read",
+   "tried": "art. 6 (5), (6) read: the other taxes are impozitul privat, the local fees of Titlul VII, the natural-resource charges of Titlul VIII, the vignette (Titlul IX capitolul 3) none of these is modelled. The single tax of IT-park residents (Titlul X) is modelled under 1200",
    "unsupported": [
-    "would unlock: a statement in the statute or the tax authority's list of taxes for 2025"
+    "would unlock: Titlul VII, Titlul VIII and Titlul X of the Code and the local councils' decisions on the local fees"
    ],
-   "triage": "minor: no other national tax recorded by the registry; to confirm against the country's list of taxes",
    "family_file": "lean/MdGlobal/Other.lean",
-   "family_guards": 0
+   "family_guards": 15
   },
   {
    "oecd": "4400",
-   "tax": "Real-estate transfer and stamp duties",
-   "statute": "taxa de stat (no transfer tax as such)",
-   "grade": "C",
-   "status": "unsupported",
-   "kernel_parts": [],
-   "tried": "not read in the P5 pass",
+   "tax": "Taxa de stat (autentificarea contractelor de înstrăinare a bunurilor imobile)",
+   "statute": "Legea taxei de stat nr. 213/2023 art. 4, anexa nr. 1 pct. 8.3.2 (0,5 % of the contract price, not less than on the registered value)",
+   "dated": "Legea nr. 213/2023 as in force 01.01.2025 (edition of 26.09.2024), read on legis.md in a browser on 26 November 2026 (doc_id=145352)",
+   "grade": "A",
+   "kernel_parts": [
+    "TransferDuty"
+   ],
    "unsupported": [
-    "would unlock: the act's 2025 rate articles (and the reference region's rate where regional)"
+    "transfers to a child, spouse, parent, sibling, grandparent or grandchild pay 0,1 % (pct. 8.3.1): the relation is not in the input and 0,5 % is applied",
+    "reading taken: pct. 8.2 (5 lei) is the privatisation of public housing, not a sale between private persons",
+    "the exemptions of anexa nr. 2 and the Prima casă rate (pct. 8.4, 0,1 %) are not modelled"
    ],
    "family_file": "lean/MdGlobal/Property.lean",
-   "family_guards": 0
+   "family_guards": 6
   },
   {
    "oecd": "4100",
-   "tax": "Recurrent property tax",
-   "statute": "Codul fiscal Titlul VI (impozitul pe bunurile imobiliare, Chișinău)",
-   "grade": "C",
-   "status": "unsupported",
-   "kernel_parts": [],
-   "tried": "not read in the P5 pass",
-   "unsupported": [
-    "would unlock: the act and the reference municipality's 2025 rate (registry choice)"
+   "tax": "Impozitul pe bunurile imobiliare",
+   "statute": "Codul fiscal Titlul VI art. 280 alin. (1) lit. a) (residential property: at least 0,05 % of the taxable base, the rate set each year by the local council), Chișinău 2025: Dispoziția Primarului General nr. 588-d din 27.12.2024, anexa nr. 6 pct. 1 (0,185 %)",
+   "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612), the Chișinău order read from the scan on chisinau.md in a browser on 26 November 2026",
+   "grade": "A",
+   "kernel_parts": [
+    "LocalTax (2.8.0)"
    ],
+   "unsupported": [
+    "where no rate is given, Chișinău's 0,185 % for 2025 is applied, another municipality's rate is an input (localRates.propertyTax)",
+    "farm land with buildings (0,1 % in Chișinău) and non-residential property (0,3 %) are not distinguished from residential property",
+    "Chișinău's exemption of part of the value for some groups of owners was not read",
+    "the council's increase of up to 300 % for neglected buildings and unworked land (art. 280 alin. (1¹)) is not modelled"
+   ],
+   "lfw": 1,
+   "status": "framework (local rate input)",
+   "local_rate": "the municipality's rate is an input (localRates.propertyTax), default: Chișinău 2025, 0,185 %",
    "family_file": "lean/MdGlobal/Property.lean",
-   "family_guards": 0
+   "family_guards": 6
   },
   {
    "oecd": "2200",
-   "tax": "Employer social contributions and payroll taxes",
-   "statute": "Codul fiscal / Legea bugetului asigurărilor sociale 2025 (angajator 24 %)",
-   "grade": "C",
-   "status": "unsupported",
-   "kernel_parts": [],
-   "tried": "not read in the P4 pass (no dated employer rates with quotes in the 1.x model or fetched texts)",
+   "tax": "Contribuții de asigurări sociale de stat obligatorii (angajator)",
+   "statute": "Legea nr. 489/1999 privind sistemul public de asigurări sociale, anexa nr. 1 pct. 1.1 (24 % for private-sector employers, no ceiling)",
+   "dated": "Legea nr. 489/1999 as in force 01.01.2025 (edition of 31.01.2024), read on legis.md in a browser on 26 November 2026 (doc_id=139810), anexa nr. 1 is the .docx the page links",
+   "grade": "A",
+   "kernel_parts": [
+    "Contribution"
+   ],
    "unsupported": [
-    "would unlock: the act's 2025 employer rates and ceilings (official consolidation or the 1.x model's parameters with quotes)"
+    "budget-funded employers (29 %), special working conditions (32 % / 39 %), farm employers (18 % + 6 % from the state budget) and IT-park residents (Legea nr. 77/2016) are not distinguished"
    ],
    "family_file": "lean/MdGlobal/Social.lean",
-   "family_guards": 0
+   "family_guards": 5
+  },
+  {
+   "oecd": "2100",
+   "tax": "Prima de asigurare obligatorie de asistență medicală (angajat)",
+   "statute": "Legea nr. 304/2024 art. 4 alin. (1) (9,0 % of wages), Legea nr. 1593/2002 anexa nr. 1 pct. 2, art. 6",
+   "dated": "Legea nr. 304/2024 (doc_id=146464), Legea nr. 303/2024 (doc_id=146462) and Legea nr. 1593/2002 (doc_id=144917) as in force 01.01.2025, read on legis.md in a browser on 26 November 2026",
+   "grade": "A",
+   "kernel_parts": [
+    "Contribution"
+   ],
+   "unsupported": [
+    "the income-tax model does not deduct the premium, so the 1100 income tax on wages is too high by 12 % of the premium",
+    "employees of IT-park residents pay no premium (Legea nr. 1593/2002 art. 4 (1¹)), which a household line cannot show"
+   ],
+   "family_file": "lean/MdGlobal/Social.lean",
+   "family_guards": 5
+  },
+  {
+   "oecd": "2300",
+   "tax": "Fixed contributions of the self-employed (social contribution and health premium)",
+   "statute": "Legea nr. 303/2024 art. 3 alin. (1) (20 518 lei), Legea nr. 489/1999 anexa nr. 1 pct. 1.6, Legea nr. 304/2024 art. 4 alin. (2) (12 636 lei), Legea nr. 1593/2002 anexa nr. 2 pct. 1 lit. b)",
+   "dated": "Legea nr. 304/2024 (doc_id=146464), Legea nr. 303/2024 (doc_id=146462) and Legea nr. 1593/2002 (doc_id=144917) as in force 01.01.2025, read on legis.md in a browser on 26 November 2026",
+   "grade": "B",
+   "kernel_parts": [
+    "flatCharge"
+   ],
+   "unsupported": [
+    "an adult with self-employment income and no wages is taken as a founder of an individual enterprise, a default of the model (the reason for grade B)",
+    "pensioners, persons with disabilities, liberal professions (27 772 lei) and patent holders are not distinguished",
+    "an adult with both wages and self-employment income is not decided, nothing is booked",
+    "the reductions of the fixed health premium for early payment are not modelled"
+   ],
+   "family_file": "lean/MdGlobal/Social.lean",
+   "family_guards": 5
   },
   {
    "oecd": "4300",
-   "tax": "Inheritance and gift tax",
-   "statute": "none recorded (not cited)",
-   "grade": "C",
-   "status": "unsupported",
-   "kernel_parts": [],
-   "tried": "not read in the P6 pass",
+   "tax": "Inheritance and gift tax (not levied)",
+   "statute": "Codul fiscal art. 20 lit. i) (property received by citizens as a gift or inheritance is non-taxable income), art. 90¹ alin. (3¹) (6 % income tax withheld on donated money)",
+   "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+   "grade": "A",
+   "status": "absent",
+   "kernel_parts": [
+    "Absent"
+   ],
    "unsupported": [
-    "would unlock: the act's 2025 classes, allowances and tariff (or a provision showing the tax is not levied)"
+    "the 6 % withheld on money donated by the payers of art. 90 (heading 1100) is not modelled: the donor is not in the input"
    ],
    "family_file": "lean/MdGlobal/Wealth.lean",
-   "family_guards": 0
+   "family_guards": 6
   },
   {
    "oecd": "4200",
-   "tax": "Net wealth tax",
-   "statute": "none recorded",
-   "grade": "C",
-   "status": "unsupported",
-   "kernel_parts": [],
-   "tried": "not read in the P6 pass",
+   "tax": "Impozitul pe avere",
+   "statute": "Codul fiscal Titlul VI¹ art. 287¹-287⁷ (art. 287³ alin. (1): residential property of at least 200 average salaries and 120 m², art. 287⁴: 0,8 %), HG nr. 845/2024 (average salary 16 100 lei)",
+   "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612), HG nr. 845/2024 (doc_id=146269)",
+   "grade": "A",
+   "kernel_parts": [
+    "charge",
+    "assetAreaM2 (2.4.0)"
+   ],
    "unsupported": [
-    "would unlock: the act's 2025 rates and allowances (or a provision showing no wealth tax is levied)"
+    "assets of kind realEstate are taken as residential, joint ownership (art. 287² (2), (3)) follows the asset's person",
+    "floor area not given (areaM2): no charge, listed as grade C",
+    "reading taken: the two conditions of art. 287³ (1) are cumulative"
    ],
    "family_file": "lean/MdGlobal/Wealth.lean",
-   "family_guards": 0
+   "family_guards": 6
   }
  ],
  "grades": {
-  "A": 0,
-  "B": 4,
-  "C": 9
+  "A": 12,
+  "B": 2,
+  "C": 1
  },
- "guards": 10,
+ "guards": 67,
  "sorry": 0,
- "cases": 4,
+ "cases": 11,
  "testing": {
   "software": [],
   "datasets": []

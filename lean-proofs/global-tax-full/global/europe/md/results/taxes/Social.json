@@ -1,14 +1,45 @@
 [
  {
   "oecd": "2200",
-  "tax": "Employer social contributions and payroll taxes",
-  "statute": "Codul fiscal / Legea bugetului asigurărilor sociale 2025 (angajator 24 %)",
-  "grade": "C",
-  "status": "unsupported",
-  "kernel_parts": [],
-  "tried": "not read in the P4 pass (no dated employer rates with quotes in the 1.x model or fetched texts)",
+  "tax": "Contribuții de asigurări sociale de stat obligatorii (angajator)",
+  "statute": "Legea nr. 489/1999 privind sistemul public de asigurări sociale, anexa nr. 1 pct. 1.1 (24 % for private-sector employers, no ceiling)",
+  "dated": "Legea nr. 489/1999 as in force 01.01.2025 (edition of 31.01.2024), read on legis.md in a browser on 26 November 2026 (doc_id=139810), anexa nr. 1 is the .docx the page links",
+  "grade": "A",
+  "kernel_parts": [
+   "Contribution"
+  ],
   "unsupported": [
-   "would unlock: the act's 2025 employer rates and ceilings (official consolidation or the 1.x model's parameters with quotes)"
+   "budget-funded employers (29 %), special working conditions (32 % / 39 %), farm employers (18 % + 6 % from the state budget) and IT-park residents (Legea nr. 77/2016) are not distinguished"
+  ]
+ },
+ {
+  "oecd": "2100",
+  "tax": "Prima de asigurare obligatorie de asistență medicală (angajat)",
+  "statute": "Legea nr. 304/2024 art. 4 alin. (1) (9,0 % of wages), Legea nr. 1593/2002 anexa nr. 1 pct. 2, art. 6",
+  "dated": "Legea nr. 304/2024 (doc_id=146464), Legea nr. 303/2024 (doc_id=146462) and Legea nr. 1593/2002 (doc_id=144917) as in force 01.01.2025, read on legis.md in a browser on 26 November 2026",
+  "grade": "A",
+  "kernel_parts": [
+   "Contribution"
+  ],
+  "unsupported": [
+   "the income-tax model does not deduct the premium, so the 1100 income tax on wages is too high by 12 % of the premium",
+   "employees of IT-park residents pay no premium (Legea nr. 1593/2002 art. 4 (1¹)), which a household line cannot show"
+  ]
+ },
+ {
+  "oecd": "2300",
+  "tax": "Fixed contributions of the self-employed (social contribution and health premium)",
+  "statute": "Legea nr. 303/2024 art. 3 alin. (1) (20 518 lei), Legea nr. 489/1999 anexa nr. 1 pct. 1.6, Legea nr. 304/2024 art. 4 alin. (2) (12 636 lei), Legea nr. 1593/2002 anexa nr. 2 pct. 1 lit. b)",
+  "dated": "Legea nr. 304/2024 (doc_id=146464), Legea nr. 303/2024 (doc_id=146462) and Legea nr. 1593/2002 (doc_id=144917) as in force 01.01.2025, read on legis.md in a browser on 26 November 2026",
+  "grade": "B",
+  "kernel_parts": [
+   "flatCharge"
+  ],
+  "unsupported": [
+   "an adult with self-employment income and no wages is taken as a founder of an individual enterprise, a default of the model (the reason for grade B)",
+   "pensioners, persons with disabilities, liberal professions (27 772 lei) and patent holders are not distinguished",
+   "an adult with both wages and self-employment income is not decided, nothing is booked",
+   "the reductions of the fixed health premium for early payment are not modelled"
   ]
  }
 ]

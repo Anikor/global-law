@@ -1,26 +1,36 @@
 [
  {
   "oecd": "4400",
-  "tax": "Real-estate transfer and stamp duties",
-  "statute": "taxa de stat (no transfer tax as such)",
-  "grade": "C",
-  "status": "unsupported",
-  "kernel_parts": [],
-  "tried": "not read in the P5 pass",
+  "tax": "Taxa de stat (autentificarea contractelor de înstrăinare a bunurilor imobile)",
+  "statute": "Legea taxei de stat nr. 213/2023 art. 4, anexa nr. 1 pct. 8.3.2 (0,5 % of the contract price, not less than on the registered value)",
+  "dated": "Legea nr. 213/2023 as in force 01.01.2025 (edition of 26.09.2024), read on legis.md in a browser on 26 November 2026 (doc_id=145352)",
+  "grade": "A",
+  "kernel_parts": [
+   "TransferDuty"
+  ],
   "unsupported": [
-   "would unlock: the act's 2025 rate articles (and the reference region's rate where regional)"
+   "transfers to a child, spouse, parent, sibling, grandparent or grandchild pay 0,1 % (pct. 8.3.1): the relation is not in the input and 0,5 % is applied",
+   "reading taken: pct. 8.2 (5 lei) is the privatisation of public housing, not a sale between private persons",
+   "the exemptions of anexa nr. 2 and the Prima casă rate (pct. 8.4, 0,1 %) are not modelled"
   ]
  },
  {
   "oecd": "4100",
-  "tax": "Recurrent property tax",
-  "statute": "Codul fiscal Titlul VI (impozitul pe bunurile imobiliare, Chișinău)",
-  "grade": "C",
-  "status": "unsupported",
-  "kernel_parts": [],
-  "tried": "not read in the P5 pass",
+  "tax": "Impozitul pe bunurile imobiliare",
+  "statute": "Codul fiscal Titlul VI art. 280 alin. (1) lit. a) (residential property: at least 0,05 % of the taxable base, the rate set each year by the local council), Chișinău 2025: Dispoziția Primarului General nr. 588-d din 27.12.2024, anexa nr. 6 pct. 1 (0,185 %)",
+  "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612), the Chișinău order read from the scan on chisinau.md in a browser on 26 November 2026",
+  "grade": "A",
+  "kernel_parts": [
+   "LocalTax (2.8.0)"
+  ],
   "unsupported": [
-   "would unlock: the act and the reference municipality's 2025 rate (registry choice)"
-  ]
+   "where no rate is given, Chișinău's 0,185 % for 2025 is applied, another municipality's rate is an input (localRates.propertyTax)",
+   "farm land with buildings (0,1 % in Chișinău) and non-residential property (0,3 %) are not distinguished from residential property",
+   "Chișinău's exemption of part of the value for some groups of owners was not read",
+   "the council's increase of up to 300 % for neglected buildings and unworked land (art. 280 alin. (1¹)) is not modelled"
+  ],
+  "lfw": 1,
+  "status": "framework (local rate input)",
+  "local_rate": "the municipality's rate is an input (localRates.propertyTax), default: Chișinău 2025, 0,185 %"
  }
 ]

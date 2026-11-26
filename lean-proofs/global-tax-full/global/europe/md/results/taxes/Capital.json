@@ -1,14 +1,18 @@
 [
  {
   "oecd": "1100",
-  "tax": "Gains of individuals on shares and property (disposals)",
-  "statute": "Codul fiscal art. 39-40 (venitul din creșterea de capital)",
-  "grade": "C",
-  "status": "unsupported",
-  "kernel_parts": [],
-  "tried": "the gains provisions were not read in the P3 pass (the 1.x model may tax the household's own `capitalGains`; the extra disposals are not routed)",
+  "tax": "Impozitul pe venit: creșterea de capital (gains of individuals on disposals)",
+  "statute": "Codul fiscal art. 37-41 (art. 40 alin. (1), (5¹), (6), (7), art. 41 alin. (1)), art. 15 lit. a) (12 %)",
+  "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+  "grade": "A",
+  "kernel_parts": [
+   "charge",
+   "Schedule"
+  ],
   "unsupported": [
-   "would unlock: the act's gains articles as in force 2025 (holding periods, main-home exemption, rate or routing into the 1.x model)"
+   "a personal exemption (art. 33-35) left unused by the person's other income is not set against the gain",
+   "every asset of kind vehicle is taken as a car, collection vehicles (art. 40 (5¹)) are not distinguished",
+   "gifts treated as sales by the donor (art. 40 (4), (5)) are not in the input"
   ]
  }
 ]

@@ -2,43 +2,46 @@
  {
   "oecd": "1200",
   "tax": "Impozitul pe venit (persoane juridice)",
-  "statute": "Codul fiscal nr. 1163/1997 art. 15 lit. b) (12 %)",
-  "dated": "PwC, last reviewed 2 July 2025",
-  "grade": "B",
+  "statute": "Codul fiscal nr. 1163/1997 art. 15 lit. b) (12 %), lit. c) (farm households 7 %), art. 54²-54³ (4 % regime), art. 369-370 (single tax of IT-park residents, 7 % of sales with a minimum per employee)",
+  "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+  "grade": "A",
   "kernel_parts": [
-   "CorpRegime"
+   "CorpRegime",
+   "charge",
+   "companySectors (2.5.0)"
   ],
   "unsupported": [
-   "the Code's own text not reached (secondary host)",
-   "4 % regime for small non-VAT companies and 7 % for farming enterprises not modelled"
+   "the regime is read from company.sector (farmHousehold, smallBusinessRegime, itPark, names of the model's own). No sector: 12 %",
+   "the conditions of the 4 % regime (art. 54¹) are not tested, and the income in the accounts is taken as the turnover",
+   "the IT-park minimum is taken for 12 months for every employee, the Code computes it month by month",
+   "deduction limits of Titlul II capitolul 3, group regimes, transfer pricing and treaties are not modelled"
   ]
  },
  {
   "oecd": "1200",
   "tax": "Withholding on payments abroad",
-  "statute": "Codul fiscal art. 71, 72, 73 (dividends 6 %; interest and royalties 12 %)",
-  "dated": "PwC WWTS Corporate - Withholding taxes, 2025-06-24 (Wayback capture)",
-  "grade": "B",
+  "statute": "Codul fiscal art. 91 alin. (1) (dividends 6 %, other income of art. 71 12 %), art. 71 alin. (1) lit. e), f), j)",
+  "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+  "grade": "A",
   "kernel_parts": [
    "Wht"
   ],
   "unsupported": [
-   "EU parent-subsidiary / interest-royalty exemptions and the higher tax-haven rates not modelled",
-   "treaty rates and EU directives out of scope (statutory, treaty-free)"
+   "dividends from profits of 2008–2011 pay 15 %: the 6 % rate is applied",
+   "every payment abroad is taken as Moldovan-source income of art. 71, treaties are not modelled"
   ]
  },
  {
   "oecd": "1200",
-  "tax": "Impozit reținut la sursă (servicii) (services)",
-  "statute": "Codul fiscal nr. 1163/1997 art. 71, 73 (non-residents)",
-  "dated": "2025-06-24",
-  "grade": "B",
+  "tax": "Impozit reținut la sursă (servicii)",
+  "statute": "Codul fiscal art. 91 alin. (1), art. 71 alin. (1) lit. b), b¹), r) (services 12 %)",
+  "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+  "grade": "A",
   "kernel_parts": [
    "Wht"
   ],
   "unsupported": [
-   "services are taken as Moldovan-source income (art. 71) taxed at the general 12 % rate",
-   "treaty rates and EU directives out of scope (statutory, treaty-free)"
+   "services are taken as performed in Moldova (art. 71 (1) lit. b¹), r)) or as management and consulting services paid by a resident (lit. b))"
   ]
  }
 ]

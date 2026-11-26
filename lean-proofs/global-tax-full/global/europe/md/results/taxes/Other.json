@@ -1,28 +1,33 @@
 [
  {
   "oecd": "5200",
-  "tax": "Taxes on use of goods (motor vehicle taxes)",
-  "statute": "the country's motor-vehicle tax act",
-  "grade": "C",
-  "status": "unsupported",
-  "kernel_parts": [],
-  "tried": "not read in the P7 pass",
-  "unsupported": [
-   "would unlock: the vehicle tax act and the 2025 rates (no vehicle field in the canonical entity: an asset of kind vehicle with an annual value would carry it)"
+  "tax": "Taxa pentru folosirea drumurilor de către autovehiculele înmatriculate în Republica Moldova",
+  "statute": "Codul fiscal Titlul IX art. 337-340, anexa nr. 1 pct. 1 (motorcycles), pct. 2 (cars per cm³), pct. 5 (tractors), pct. 6 (lorries by total mass), pct. 7 (buses by seats)",
+  "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
+  "grade": "A",
+  "kernel_parts": [
+   "VehicleTax (2.4.0)",
+   "QtyTable"
   ],
-  "triage": "blocked: the canonical input has no vehicle attributes (CO2, engine kW / cm3, mass, fuel, first registration); kernel request filed (R1 Europe pass 7); national vs municipal frame to be recorded with the act"
+  "unsupported": [
+   "trailers and semi-trailers (anexa nr. 1 pct. 3, 4, per tonne of load capacity) are not modelled: the input has no load capacity",
+   "a car with no engine capacity (electric) has no row in pct. 2: no charge, listed as grade C",
+   "the exemption of persons with locomotor disabilities (art. 343) is not in the input",
+   "reading taken: the rate of the car's band applies to its whole engine capacity",
+   "the kind names lorry, bus and tractor are the model's own"
+  ]
  },
  {
   "oecd": "6000",
   "tax": "Other taxes",
-  "statute": "none recorded by the registry",
+  "statute": "Codul fiscal art. 6 alin. (5), (6) (the Code's list of state and local taxes)",
+  "dated": "Codul fiscal nr. 1163/1997 as in force 01.01.2025, read on legis.md in a browser on 25-26 November 2026 (doc_id=138612)",
   "grade": "C",
   "status": "unsupported",
   "kernel_parts": [],
-  "tried": "registry row: no other notable tax; no provision read",
+  "tried": "art. 6 (5), (6) read: the other taxes are impozitul privat, the local fees of Titlul VII, the natural-resource charges of Titlul VIII, the vignette (Titlul IX capitolul 3) none of these is modelled. The single tax of IT-park residents (Titlul X) is modelled under 1200",
   "unsupported": [
-   "would unlock: a statement in the statute or the tax authority's list of taxes for 2025"
-  ],
-  "triage": "minor: no other national tax recorded by the registry; to confirm against the country's list of taxes"
+   "would unlock: Titlul VII, Titlul VIII and Titlul X of the Code and the local councils' decisions on the local fees"
+  ]
  }
 ]

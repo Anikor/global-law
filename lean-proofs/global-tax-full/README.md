@@ -330,7 +330,7 @@ Grades are counts of taxes in each jurisdiction's `results/summary.json`.
 | Mauritius | MU | [`global/R4/mu`](global/R4/mu/) | 10 | 2 | 0 | 0 | 2 | 0 |
 | Mexico | MX | [`global/americas/mx`](global/americas/mx/) | 9 | 1 | 0 | 4 | 5 | 1 |
 | Micronesia | FM | [`global/asiapac/fm`](global/asiapac/fm/) | 3 | 7 | 0 | 1 | 3 | 0 |
-| Moldova | MD | [`global/europe/md`](global/europe/md/) | 0 | 4 | 0 | 0 | 9 | 0 |
+| Moldova | MD | [`global/europe/md`](global/europe/md/) | 10 | 2 | 1 | 1 | 1 | 0 |
 | Monaco | MC | [`global/europe/mc`](global/europe/mc/) | 2 | 0 | 0 | 0 | 10 | 0 |
 | Mongolia | MN | [`global/asiapac/mn`](global/asiapac/mn/) | 4 | 7 | 0 | 3 | 0 | 0 |
 | Montenegro | ME | [`global/europe/me`](global/europe/me/) | 5 | 2 | 0 | 0 | 7 | 0 |
